@@ -7,7 +7,7 @@ NAGIOS_VERSION="4.4.7"
 apt-get update
 echo "Acquire::http::No-Cache true;" > /etc/apt/apt.conf && \
 echo "Acquire::http::Pipeline-Depth 0;" >> /etc/apt/apt.conf && \
-apt-get install -y wget unzip zip autoconf gcc libc6 make apache2-utils libgd-dev apache2 libapache2-mod-php php \
+apt-get install -y wget unzip zip autoconf gcc libc6 make apache2-utils libgd-dev apache2 libapache2-mod-php php mailutils iputils-ping \
 libmcrypt-dev make libssl-dev bc gawk dc build-essential snmp libnet-snmp-perl gettext libldap2-dev smbclient fping libmysqlclient-dev libdbi-dev
 
 #add nagios user
@@ -31,7 +31,12 @@ make install-webconf
 a2enmod cgi
 
 #set credentials for basic auth
-htpasswd -cb /usr/local/nagios/etc/htpasswd.users nagios nagios
+htpasswd -cb /usr/local/nagios/etc/htpasswd.users nagiosadmin ties4711
 
 #disable due memory leak
 sed -i 's/check_for_updates=1/check_for_updates=0/g' /usr/local/nagios/etc/nagios.cfg
+
+#cleanup
+rm -rf nagios-4.4.7*
+
+
