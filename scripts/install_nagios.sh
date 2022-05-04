@@ -36,7 +36,3 @@ htpasswd -cb /usr/local/nagios/etc/htpasswd.users nagiosadmin ties4711
 #disable due memory leak
 sed -i 's/check_for_updates=1/check_for_updates=0/g' /usr/local/nagios/etc/nagios.cfg
 
-#cleanup
-rm -rf nagios-4.4.7*
-
-

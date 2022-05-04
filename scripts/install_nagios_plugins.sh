@@ -13,10 +13,6 @@ wget https://github.com/nagios-plugins/nagios-plugins/releases/download/release-
 tar xfz nagios-plugins-$NAGIOS_PLUGINS_VERSION.tar.gz
 cd nagios-plugins-$NAGIOS_PLUGINS_VERSION/
 #./tools/setup
-
-
 ./configure
 make
 make install
-
-rm -rf nagios-plugins-$NAGIOS_PLUGINS_VERSION*
