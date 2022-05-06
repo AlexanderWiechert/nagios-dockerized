@@ -1,8 +1,9 @@
-FROM ubuntu:latest
+FROM ubuntu:latest as build
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ="Europe/Berlin"
 
-COPY scripts/* usr/local/bin/
+#WORKDIR /usr/local/nagios
+COPY scripts/* /usr/local/bin/
 
 RUN install_nagios.sh && \
     install_nagios_plugins.sh
@@ -16,8 +17,8 @@ RUN chown -R nagios:nagios /usr/local/nagios/ && \
     rm -rf nagios-plugins-$NAGIOS_PLUGINS_VERSION*
 
 
-#ENTRYPOINT ["entrypoint.sh"]
-#CMD ["entrypoint.sh"]
-#CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+#FROM ubuntu:latest as main
+#COPY --from=build /usr/local/nagios /usr/local/nagios
+#COPY scripts/entrypoint.sh /usr/local/bin/
 CMD /bin/bash -x entrypoint.sh
 #CMD /bin/bash
