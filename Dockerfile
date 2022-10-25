@@ -1,4 +1,4 @@
-FROM ubuntu:latest as build
+FROM ubuntu:22.04 as build
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ="Europe/Berlin"
 
