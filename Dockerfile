@@ -1,4 +1,4 @@
-FROM ubuntu:latest as build
+FROM ubuntu:kinetic-20220830 as build
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ="Europe/Berlin"
 
