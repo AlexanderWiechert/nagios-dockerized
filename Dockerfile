@@ -1,4 +1,4 @@
-FROM ubuntu:lunar-20230615 as build
+FROM ubuntu:mantic as build
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ="Europe/Berlin"
